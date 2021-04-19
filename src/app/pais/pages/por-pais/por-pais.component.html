@@ -10,6 +10,23 @@
   </div>
 </div>
 
+<ul *ngIf="mostrarSugerencias" 
+  class="list-group">
+  <li *ngFor="let paisSugerido of paisesSugeridos" class="list-group-item list-group-item-action">
+    <a [routerLink]="['/pais', paisSugerido.alpha2Code]"
+        class="nav-link">      
+      {{ paisSugerido.name }}
+    </a>
+  </li>
+  <li 
+    (click)="buscarSugerido(termino)"
+    class="list-group-item list-group-item-action">
+    <a class="nav-link">      
+      Buscar "{{ termino }}"
+    </a>
+  </li>
+</ul>
+
 <hr>
 
 <div class="alert alert-danger" *ngIf="hayError" >
